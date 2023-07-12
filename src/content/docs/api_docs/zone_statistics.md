@@ -18,21 +18,20 @@ Gets all zones for you available.
 Example request:
 
 ```
-https://mds.dashboarddeelmobiliteit.nl/public/zones?apikey=xxxx
+https://mds.dashboarddeelmobiliteit.nl/public/zones
 ```
 
 Replace `xxxx` with your API key
 
 Available parameters:
 
-- `apikey`
 - `gm_code=GM0599`
 - `geography_types=['no_parking', 'stop', 'monitoring']`
 
 Example request:
 
 ```
-https://mds.dashboarddeelmobiliteit.nl/public/zones?apikey=xxxx&gm_code=GM0599
+https://mds.dashboarddeelmobiliteit.nl/public/zones?&gm_code=GM0599
 ```
 
 ## Parked vehicles
