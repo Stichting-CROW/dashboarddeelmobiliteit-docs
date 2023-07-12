@@ -29,7 +29,7 @@ export default defineConfig({
         label: 'Getting started',
         link: '/api_docs/getting_started'
       }, {
-        label: 'Get API-key',
+        label: 'Get API key',
         link: '/api_docs/get_apikey'
       }, {
         label: 'Zone statistics',
