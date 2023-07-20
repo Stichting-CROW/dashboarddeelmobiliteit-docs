@@ -9,5 +9,4 @@ For most API's you need documentation. Read about [getting an API key](/api_docs
 
 The Dashboard Deelmobiliteit offers the following API's:
 
-- API name 1: Purpose
-- API name 2: Purpose
+- [Zone statistics](/api_docs/zone_statistics/): Get detailed timeseries based statistics for the zones you have drawn in the dashboard.

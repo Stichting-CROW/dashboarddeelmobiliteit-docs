@@ -27,7 +27,7 @@ Replace `xxxx` with your API key
 
 Available parameters:
 
-- `gm_code=GM0599`
+- `municipality=GM0599`
 - `geography_types=['no_parking', 'stop', 'monitoring']`
 
 Example request:
