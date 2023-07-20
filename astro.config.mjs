@@ -32,6 +32,9 @@ export default defineConfig({
         label: 'Get API key',
         link: '/api_docs/get_apikey'
       }, {
+        label: 'Microhubs',
+        link: '/api_docs/microhubs'
+      }, {
         label: 'Zone statistics',
         link: '/api_docs/zone_statistics'
       }, {
