@@ -3,7 +3,9 @@ title: Zone statistics
 description: API's for zone statistics
 ---
 
-The Dashboard has the functionality to draw microhubs, no-parking areas and zones solely with a monitoring purpose. For all of these zones the Dashboard tracks statistics about the number of vehicles in the zone and the number of trips starting or ending in a zone with a 5 minute interval.
+The Dashboard has the functionality to draw microhubs, no-parking areas and zones solely with a monitoring purpose.
+
+For all of these zones the Dashboard tracks statistics about the number of vehicles in the zone and the number of trips starting or ending in a zone with a 5 minute interval.
 
 The Zone Statistics API has three API end points available:
 
@@ -31,7 +33,7 @@ Available parameters:
 Example request:
 
 ```
-https://mds.dashboarddeelmobiliteit.nl/public/zones?&gm_code=GM0599
+https://mds.dashboarddeelmobiliteit.nl/public/zones?gm_code=GM0599
 ```
 
 ## Parked vehicles
