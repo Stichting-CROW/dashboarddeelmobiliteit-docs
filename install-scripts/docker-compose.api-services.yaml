@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  dashboard-api:
+    image: ghcr.io/stichting-crow/dashboarddeelmobiliteit-api:1.26
+    depends_on:
+        - redis
+        - postgresql
+    environment:
+      DB_NAME: dashboarddeelmobiliteit
+      DB_HOST: postgresql
+      DB_USER: postgres
+      DB_PORT: "5432"
+      DB_PASSWORD: ${PGPASSWORD}
+      BASE_URL_FUSIONAUTH: https://auth.deelfietsdashboard.nl
+      FUSIONAUTH_APIKEY: WKONxXhPIk7NBVGwIGykUonZub934vFfsPHFTvqM7lg
+      APP_ID: bf901170-a2db-4f91-8ca7-24921e961193
+      TIMESCALEDB_NAME: dashboarddeelmobiliteit
+      TIMESCALE_DB_HOST: postgresql
+      TIMESCALE_DB_PASSWORD: ${PGPASSWORD}
+      TIMESCALE_DB_USER: postgres
+      TIMESCALEDB_PORT: "5432"
+      REDIS_URL: redis
+    
+    ports:
+      - 8002:8000
+
+    networks:
+      - backend

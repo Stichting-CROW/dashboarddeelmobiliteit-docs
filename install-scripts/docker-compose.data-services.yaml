@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  data-importer:
+    image: ghcr.io/stichting-crow/dd-data-importer:1.9.1
+    depends_on:
+        - redis
+        - postgresql
+        - tile38
+    environment:
+      DEV: false
+      DB_NAME: dashboarddeelmobiliteit
+      DB_USER: postgres
+      DB_HOST: postgresql
+      DB_PASSWORD: ${PGPASSWORD}
+      REDIS_HOST: redis:6379
+      TILE38_HOST: tile38:9851
+
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  db_data:
+  redis_data:
+  fusionauth_config:

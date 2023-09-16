@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+
+  postgresql:
+    image: timescale/timescaledb-ha:pg15
+    command: postgres -c 'max_connections=200' 
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    environment:
+      POSTGRES_PASSWORD: ${PGPASSWORD}
+    
+  redis:
+    image: redis:7.2-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/var/lib/redis
+    networks:
+      - backend
+
+  tile38:
+    image: tile38/tile38:1.32.0
+    ports: 
+      - "9851:9851" 
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: backend
+
+volumes:
+  db_data:
+  redis_data:
+  fusionauth_config:

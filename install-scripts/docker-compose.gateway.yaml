@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  fusionauth:
+    image: fusionauth/fusionauth-app:latest
+    depends_on:
+      - postgresql
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgresql:5432/fusionauth
+      DATABASE_ROOT_USERNAME: ${POSTGRES_USER}
+      DATABASE_ROOT_PASSWORD: ${PGPASSWORD}
+      DATABASE_USERNAME: ${DATABASE_FUSIONAUTH_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_FUSIONAUTH_PASSWORD}
+      FUSIONAUTH_APP_MEMORY: ${FUSIONAUTH_APP_MEMORY}
+      FUSIONAUTH_APP_RUNTIME_MODE: development
+      FUSIONAUTH_APP_URL: http://fusionauth:9011
+      SEARCH_TYPE: database
+      
+    networks:
+      - backend
+    restart: unless-stopped
+    ports:
+      - 9011:9011
+    volumes:
+      - fusionauth_config:/usr/local/fusionauth/config
+
+  kong:
+    image: kong:3.4
+    depends_on:
+      - postgresql
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: postgresql
+      KONG_PG_USER: ${POSTGRES_USER}
+      KONG_PG_PASSWORD: ${PGPASSWORD}
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+
+    ports:
+      - 8000:8000
+      - 8001:8001
+
+    networks:
+      - backend
