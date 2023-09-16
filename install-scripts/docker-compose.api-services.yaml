@@ -9,7 +9,6 @@ services:
       DB_NAME: dashboarddeelmobiliteit
       DB_HOST: postgresql
       DB_USER: postgres
-      DB_PORT: "5432"
       DB_PASSWORD: ${PGPASSWORD}
       BASE_URL_FUSIONAUTH: https://auth.deelfietsdashboard.nl
       FUSIONAUTH_APIKEY: WKONxXhPIk7NBVGwIGykUonZub934vFfsPHFTvqM7lg
@@ -26,3 +25,8 @@ services:
 
     networks:
       - backend
+
+networks:
+  backend:
+    name: backend
+    external: true

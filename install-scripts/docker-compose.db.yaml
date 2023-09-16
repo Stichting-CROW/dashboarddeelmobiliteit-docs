@@ -32,6 +32,7 @@ services:
 networks:
   backend:
     name: backend
+    external: true
 
 volumes:
   db_data:

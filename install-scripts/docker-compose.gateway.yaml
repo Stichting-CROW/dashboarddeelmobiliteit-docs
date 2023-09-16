@@ -44,3 +44,8 @@ services:
 
     networks:
       - backend
+
+networks:
+  backend:
+    name: backend
+    external: true
