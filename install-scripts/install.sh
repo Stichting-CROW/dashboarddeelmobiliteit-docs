@@ -9,3 +9,5 @@ sleep 5
 ./prepare_db.sh
 
 ./run.sh
+./setup_nginx.sh
+
