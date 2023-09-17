@@ -1,0 +1,16 @@
+server {
+	server_name ${AUTH_URL};
+
+    location / {
+        # First attempt to serve request as file, then
+        # as directory, then fall back to displaying a 404.
+        proxy_http_version 1.1;
+		proxy_pass http://127.0.0.1:9011;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-Host auth.dashboarddeelmobiliteit.vlaanderen.transbits.nl;
+        proxy_set_header X-Forwarded-Port 443;
+	}
+
+    listen 80;
+    listen [::]:80;
+}

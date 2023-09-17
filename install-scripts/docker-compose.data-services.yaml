@@ -18,6 +18,7 @@ services:
 
     networks:
       - backend
+    restart: always
 
   zone-stats-aggregator:
     image: ghcr.io/stichting-crow/dd-zone-stats-aggregator:1.0.2
@@ -37,6 +38,7 @@ services:
       TIMESCALEDB_PORT: "5432"
       REDIS_URL: redis
       TILE38_URL: tile38
+    restart: always
     
     networks:
       - backend
@@ -55,6 +57,7 @@ services:
       TELEGRAM_TOKEN: ${TELEGRAM_TOKEN} 
       REDIS_URL: redis
       TILE38_URL: tile38
+    restart: always
   
     networks:
         - backend

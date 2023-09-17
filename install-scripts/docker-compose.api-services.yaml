@@ -19,9 +19,10 @@ services:
       TIMESCALE_DB_USER: postgres
       TIMESCALEDB_PORT: "5432"
       REDIS_URL: redis
+    restart: always
     
     ports:
-      - 8002:8000
+      - 127.0.0.1:8002:8000
 
     networks:
       - backend
@@ -40,6 +41,7 @@ services:
       FUSIONAUTH_APIKEY: WKONxXhPIk7NBVGwIGykUonZub934vFfsPHFTvqM7lg # TODO: set dynamic
       APP_ID: bf901170-a2db-4f91-8ca7-24921e961193 # TODO: set dynamic 
       BASE_URL_KONG_ADMIN: http://kong:8001
+    restart: always
 
     networks:
       - backend
@@ -55,6 +57,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: ${PGPASSWORD}
       TZ: Europe/Amsterdam
+    restart: always
 
     networks:
       - backend
@@ -70,6 +73,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: ${PGPASSWORD}
       REDIS_URL: redis
+    restart: always
 
     networks:
       - backend

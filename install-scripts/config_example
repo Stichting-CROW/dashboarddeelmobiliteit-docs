@@ -1,0 +1,4 @@
+API_PROXY_URL=api.dashboarddeelmobiliteit.vlaanderen.transbits.nl
+AUTH_URL=auth.dashboarddeelmobiliteit.vlaanderen.transbits.nl
+FRONTEND_URL=dashboarddeelmobiliteit.vlaanderen.transbits.nl
+MDS_URL=mds.dashboarddeelmobiliteit.vlaanderen.transbits.nl
