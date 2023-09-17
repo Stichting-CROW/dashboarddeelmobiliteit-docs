@@ -16,7 +16,3 @@ export $(grep -v '^#' .env | xargs -d '\n')
 
 # Install helpfull utilities.
 sudo apt-get install postgresql-client redis-tools -y
-
-mkdir -p /data/postgres
-mkdir -p /data/redis
-mkdir -p /data/fusionauth
