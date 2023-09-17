@@ -9,6 +9,22 @@ curl -X POST http://localhost:8001/plugins/ \
     --data "config.origins=*"
 
 # Setup JWT
+curl --request POST \
+  --url http://localhost:8001/consumers \
+  --header 'Content-Type: application/json' \
+  --header 'accept: application/json' \
+  --data '{"username":"fusionauth_authorized","custom_id":"fusionauth_authorized","tags":["general"]}'
+
+curl -X POST http://localhost:8001/consumers/fusionauth_authorized/jwt \
+  -F "rsa_public_key=@public-key.pem" \
+
+curl --request POST \
+  --url http://localhost:8001/consumers \
+  --header 'Content-Type: application/json' \
+  --header 'accept: application/json' \
+  --data '{"username":"deny","custom_id":"deny","tags":["general"]}'
+
+
 
 # Setup dashboard api
 curl -i -s -X POST http://localhost:8001/services \

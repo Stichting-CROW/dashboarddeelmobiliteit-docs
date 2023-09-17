@@ -31,4 +31,4 @@ Set A records to your machine, we recommend to define the following domains and 
 
 1. Go to https://auth.<your_url.com>
 1. Finish installation and create an account.
-1. Complete setup.
+1. Complete the 3 setup steps
