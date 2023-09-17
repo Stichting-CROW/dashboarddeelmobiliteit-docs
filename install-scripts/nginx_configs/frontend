@@ -5,6 +5,7 @@ server {
 		# First attempt to serve request as file, then
 		# as directory, then fall back to displaying a 404.
 		proxy_pass http://localhost:8000;
+		proxy_set_header Host $host;
 	}
 	
 	listen 80;
