@@ -11,8 +11,8 @@ services:
       DB_USER: postgres
       DB_PASSWORD: ${PGPASSWORD}
       BASE_URL_FUSIONAUTH: http://fusionauth:9001
-      FUSIONAUTH_APIKEY: WKONxXhPIk7NBVGwIGykUonZub934vFfsPHFTvqM7lg # TODO: set dynamic
-      APP_ID: bf901170-a2db-4f91-8ca7-24921e961193 # TODO: set dynamic 
+      FUSIONAUTH_APIKEY: ${FUSIONAUTH_API_KEY}
+      APP_ID: ${FUSIONAUTH_APP_ID}
       TIMESCALEDB_NAME: dashboarddeelmobiliteit
       TIMESCALE_DB_HOST: postgresql
       TIMESCALE_DB_PASSWORD: ${PGPASSWORD}
@@ -38,8 +38,8 @@ services:
       DB_USER: postgres
       DB_PASSWORD: ${PGPASSWORD}
       BASE_URL_FUSIONAUTH: http://fusionauth:9001
-      FUSIONAUTH_APIKEY: WKONxXhPIk7NBVGwIGykUonZub934vFfsPHFTvqM7lg # TODO: set dynamic
-      APP_ID: bf901170-a2db-4f91-8ca7-24921e961193 # TODO: set dynamic 
+      FUSIONAUTH_APIKEY: ${FUSIONAUTH_API_KEY}
+      APP_ID: ${FUSIONAUTH_APP_ID}
       BASE_URL_KONG_ADMIN: http://kong:8001
     restart: always
 

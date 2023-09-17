@@ -26,3 +26,9 @@ Set A records to your machine, we recommend to define the following domains and 
 1. Setup variables in config file with your favorite text editor. 
 1. Run ./install.sh
 1. If you would like to setup https (highly recommended) run ./setup_https.sh, this will install letsencrypt and starts a wizard.
+
+## setting up fusionauth
+
+1. Go to https://auth.<your_url.com>
+1. Finish installation and create an account.
+1. Complete setup.
