@@ -19,6 +19,46 @@ services:
     networks:
       - backend
 
+  zone-stats-aggregator:
+    image: ghcr.io/stichting-crow/dd-zone-stats-aggregator:1.0.2
+    depends_on:
+        - redis
+        - tile38
+        - postgresql
+    environment:
+      DB_NAME: dashboarddeelmobiliteit
+      DB_HOST: postgresql
+      DB_USER: postgres
+      DB_PASSWORD: ${PGPASSWORD}
+      TIMESCALEDB_NAME: dashboarddeelmobiliteit
+      TIMESCALE_DB_HOST: postgresql
+      TIMESCALE_DB_PASSWORD: ${PGPASSWORD}
+      TIMESCALE_DB_USER: postgres
+      TIMESCALEDB_PORT: "5432"
+      REDIS_URL: redis
+      TILE38_URL: tile38
+    
+    networks:
+      - backend
+
+  microhubs-controller:
+    image: ghcr.io/stichting-crow/dd-microhubs-controller:1.5
+    depends_on:
+        - redis
+        - tile38
+        - postgresql
+    environment:
+      DB_NAME: dashboarddeelmobiliteit
+      DB_HOST: postgresql
+      DB_USER: postgres
+      DB_PASSWORD: ${PGPASSWORD}
+      TELEGRAM_TOKEN: ${TELEGRAM_TOKEN} 
+      REDIS_URL: redis
+      TILE38_URL: tile38
+  
+    networks:
+        - backend
+
 networks:
   backend:
     name: backend

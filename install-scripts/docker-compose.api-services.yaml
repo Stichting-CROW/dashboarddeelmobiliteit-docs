@@ -10,9 +10,9 @@ services:
       DB_HOST: postgresql
       DB_USER: postgres
       DB_PASSWORD: ${PGPASSWORD}
-      BASE_URL_FUSIONAUTH: https://auth.deelfietsdashboard.nl
-      FUSIONAUTH_APIKEY: WKONxXhPIk7NBVGwIGykUonZub934vFfsPHFTvqM7lg
-      APP_ID: bf901170-a2db-4f91-8ca7-24921e961193
+      BASE_URL_FUSIONAUTH: http://fusionauth:9001
+      FUSIONAUTH_APIKEY: WKONxXhPIk7NBVGwIGykUonZub934vFfsPHFTvqM7lg # TODO: set dynamic
+      APP_ID: bf901170-a2db-4f91-8ca7-24921e961193 # TODO: set dynamic 
       TIMESCALEDB_NAME: dashboarddeelmobiliteit
       TIMESCALE_DB_HOST: postgresql
       TIMESCALE_DB_PASSWORD: ${PGPASSWORD}
@@ -22,6 +22,54 @@ services:
     
     ports:
       - 8002:8000
+
+    networks:
+      - backend
+
+  admin-api:
+    image: ghcr.io/stichting-crow/dashboarddeelmobiliteit-admin-api:1.2.1
+    depends_on:
+        - redis
+        - postgresql
+    environment:
+      DB_NAME: dashboarddeelmobiliteit
+      DB_HOST: postgresql
+      DB_USER: postgres
+      DB_PASSWORD: ${PGPASSWORD}
+      BASE_URL_FUSIONAUTH: http://fusionauth:9001
+      FUSIONAUTH_APIKEY: WKONxXhPIk7NBVGwIGykUonZub934vFfsPHFTvqM7lg # TODO: set dynamic
+      APP_ID: bf901170-a2db-4f91-8ca7-24921e961193 # TODO: set dynamic 
+      BASE_URL_KONG_ADMIN: http://kong:8001
+
+    networks:
+      - backend
+
+  od-api:
+    image: ghcr.io/stichting-crow/dashboarddeelmobiliteit-od-api:1.0
+    depends_on:
+        - redis
+        - postgresql
+    environment:
+      DB_NAME: dashboarddeelmobiliteit
+      DB_HOST: postgresql
+      DB_USER: postgres
+      DB_PASSWORD: ${PGPASSWORD}
+      TZ: Europe/Amsterdam
+
+    networks:
+      - backend
+
+  policy-api:
+    image: ghcr.io/stichting-crow/dd-policy-api:1.3.3
+    depends_on:
+        - redis
+        - postgresql
+    environment:
+      DB_NAME: dashboarddeelmobiliteit
+      DB_HOST: postgresql
+      DB_USER: postgres
+      DB_PASSWORD: ${PGPASSWORD}
+      REDIS_URL: redis
 
     networks:
       - backend
