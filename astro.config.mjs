@@ -13,35 +13,61 @@ export default defineConfig({
     social: {
       github: 'https://github.com/withastro/starlight'
     },
-    sidebar: [{
-      label: 'Start',
-      items: [
-      // Each item here is one entry in the navigation menu.
+    sidebar: [
       {
-        label: 'Introduction',
-        link: '/start/introduction'
-      }]
-    }, {
-      label: 'API',
-      items: [
-      // Each item here is one entry in the navigation menu.
+        label: 'Start',
+        items: [
+          // Each item here is one entry in the navigation menu.
+          {
+            label: 'Introduction',
+            link: '/start/introduction'
+          }
+        ]
+      },
       {
-        label: 'Getting started',
-        link: '/api_docs/getting_started'
-      }, {
-        label: 'Get API key',
-        link: '/api_docs/get_apikey'
-      }, {
-        label: 'Microhubs',
-        link: '/api_docs/microhubs'
-      }, {
-        label: 'Zone statistics',
-        link: '/api_docs/zone_statistics'
-      }, {
-        label: 'Zone statistics example',
-        link: '/api_docs/zone_statistics_example'
-      }]
-    }]
+        label: 'Using the API\'s',
+        items: [
+          // Each item here is one entry in the navigation menu.
+          {
+            label: 'Getting started',
+            link: '/api_docs/getting_started'
+          }, {
+            label: 'Get API key',
+            link: '/api_docs/get_apikey'
+          }
+        ]
+      },
+      {
+        label: 'Microhubs API',
+        items: [
+          {
+            label: 'Microhubs',
+            link: '/api_docs/microhubs'
+          }
+        ]
+      },
+      {
+        label: 'Zone statistics API',
+        items: [
+         {
+            label: 'Zone statistics',
+            link: '/api_docs/zone_statistics'
+          }, {
+            label: 'Zone statistics example',
+            link: '/api_docs/zone_statistics_example'
+          }
+        ]
+      },
+      {
+        label: 'Parkeertelling API',
+        items: [
+         {
+            label: 'Parkeertelling',
+            link: '/api_docs/parkeertelling'
+          }
+        ]
+      }
+    ]
   })],
   // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
   image: {
