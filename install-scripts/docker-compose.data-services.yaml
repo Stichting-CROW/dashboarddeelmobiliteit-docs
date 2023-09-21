@@ -44,7 +44,7 @@ services:
       - backend
 
   microhubs-controller:
-    image: ghcr.io/stichting-crow/dd-microhubs-controller:1.5
+    image: ghcr.io/stichting-crow/dd-microhubs-controller:1.5.3
     depends_on:
         - redis
         - tile38
