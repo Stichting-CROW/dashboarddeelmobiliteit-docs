@@ -31,7 +31,7 @@ services:
       DB_HOST: postgresql
       DB_USER: postgres
       DB_PASSWORD: ${PGPASSWORD}
-      TIMESCALEDB_NAME: dashboarddeelmobiliteit
+      TIMESCALE_DB_NAME: dashboarddeelmobiliteit
       TIMESCALE_DB_HOST: postgresql
       TIMESCALE_DB_PASSWORD: ${PGPASSWORD}
       TIMESCALE_DB_USER: postgres
