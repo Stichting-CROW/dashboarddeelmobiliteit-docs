@@ -13,4 +13,5 @@ cd sh_statbel_statistical_sectors_3812_20230101.shp
 echo 'Import statistical sectors'
 shp2pgsql -s 3812:4326 sh_statbel_statistical_sectors_3812_20230101.shp  public.statistical_sectors_belgium | psql dashboarddeelmobiliteit -h localhost -p 5432 -U postgres
 
+cd ..
 psql -h localhost -U postgres dashboarddeelmobiliteit -f transform_data.sql

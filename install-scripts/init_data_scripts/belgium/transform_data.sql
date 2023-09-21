@@ -17,7 +17,7 @@ INSERT INTO zones (area, name, owner, municipality, zone_type, stats_ref)
         INITCAP(LOWER(t_sec_nl)) as name, 
         null,
         'cnis5:' || cnis5_2023 as municipality,
-        'municipality',
+        'residential_area',
         'cs:' || cs01012023 as stat_code 
     FROM statistical_sectors_belgium
 ; 
