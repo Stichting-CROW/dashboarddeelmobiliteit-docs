@@ -19,6 +19,10 @@ You'll get back the an array with the amount of parked vehicles in that area, gr
 | scooter | 1 |
 | other | 306 |
 
+It's possible to use an user interface as well, for downloading a parkeertelling, if you've the Super Admin role for the Dashboard Deelmobiliteit. Find the 'export parkeertelling' funcionality at https://dashboarddeelmobiliteit.nl/export
+
+Below you see an example of how to use the API end point `/parkeertelling`.
+
 ## /parkeertelling
 
 Gets amount of parked vehicles for area and datetime, grouped per modality.
