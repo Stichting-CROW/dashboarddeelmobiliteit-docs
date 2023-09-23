@@ -21,6 +21,14 @@ export default defineConfig({
           {
             label: 'Introduction',
             link: '/start/introduction'
+          },
+          {
+            label: 'How to install?',
+            link: '/start/how_to_install'
+          },
+          {
+            label: 'Architecture',
+            link: '/start/architecture'
           }
         ]
       },
