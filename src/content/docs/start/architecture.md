@@ -3,7 +3,11 @@ title: Architecture
 description: A high level overview of the architecture of the dashboard deelmobiliteit
 ---
 
-## image
+## Overview of the architecture
+
+The architecture is divided in multiple layers, the Databases are responsible for storing all the data that is collected by the dashboard. The Data-services are responsible for importing data and making aggregates of those data to make them quickly accessible by the API-layer. The dashboard self is a standalone PWA that is connected with the API-layer via an API-gateway.
+
+![Architecture Image](https://dashboarddeelmobiliteit.ams3.digitaloceanspaces.com/images/architecture_shared_mobility_dashboard.png)
 
 ## Databases
 
