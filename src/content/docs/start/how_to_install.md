@@ -12,8 +12,11 @@ The installation process consists of 3 phases, every phase requires some configu
 
 # Prepare installation
 
+Create a fresh Debian machine and run the following command to install the installation scripts. 
+
 ```
-TODO: add download link.
+apt-get update && apt-get install unzip
+curl -LO https://github.com/Stichting-CROW/dashboarddeelmobiliteit-docs/archive/refs/heads/main.zip && unzip main.zip && rm main.zip
 ```
 
 ## Setup DNS
@@ -27,7 +30,8 @@ Set A records to your machine, we recommend to define the following domains and 
 
 # Install main components
 
-1. Copy config_example to config ```cp config_example example```
+1. ```cd dashboarddeelmobiliteit-docs-main/install-scripts``````
+1. Copy config_example to config ```cp config_example config```
 1. Setup variables in config file with your favorite text editor. 
 1. Run ./install.sh
 1. If you would like to setup https (highly recommended) run ./setup_https.sh, this will install letsencrypt and starts a wizard.
@@ -47,5 +51,5 @@ In the frontend a few settings needs to be set to make the frontend work with th
 
 1. Run init script for frontend
 1. Modify .env file
-1. Modify images
-1. Run deploy step of frontend
+1. Modify images.
+1. Run deploy step of frontend.
