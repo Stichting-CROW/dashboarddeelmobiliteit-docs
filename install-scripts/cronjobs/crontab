@@ -1,0 +1,2 @@
+0 * * * *  export ENVFILE=$PWD/.env && $PWD/cronjobs/run-od-matrix-aggregator.sh >> /root/cronjob_logs/od-matrix-aggregator.log
+0 3 * * *  export ENVFILE=$PWD/.env && $PWD/cronjobs/run-dd-daily-report-aggregator.sh >> /root/cronjob_logs/dd-daily-report-aggregator.log
