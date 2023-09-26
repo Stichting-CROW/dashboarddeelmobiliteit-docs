@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   dashboard-api:
-    image: ghcr.io/stichting-crow/dashboarddeelmobiliteit-api:1.26
+    image: ghcr.io/stichting-crow/dashboarddeelmobiliteit-api:1.26.1
     depends_on:
         - redis
         - postgresql
