@@ -36,6 +36,9 @@ Set A records to your machine, we recommend to define the following domains and 
 1. Run ```./install.sh``````
 1. If you would like to setup https (highly recommended) run ./setup_https.sh, this will install letsencrypt and starts a wizard.
 1. Another optional step is to prepare the dashboard with some data (specify script that you need to run)
+    1. For Belgium ```cd init_data_scripts/belgium```
+        * Run ```./import_administrative_zones.sh``` to import border of municipalities
+        * Run ```./add_opendata_test_feeds.sh``` to add some opendata to the dashboard (be aware this data doesn't follow the requirements of the Dashboard)
 
 ## Setup API-gateway
 
@@ -43,6 +46,7 @@ Set A records to your machine, we recommend to define the following domains and 
 1. Finish installation and create an account.
 1. Complete the 3 setup steps
     1. Create application
+        * After creating an application go to Security and disable 'Require an API key' and save.
     1. Create apikey
     1. Setup email
 1. ```cp config_gateway_example config_gateway```
@@ -51,13 +55,20 @@ Set A records to your machine, we recommend to define the following domains and 
     1. Go to Settings -> Key Master -> Generate EC key pair -> give a name and press submit
     1. Download created Key Master with black download icon
     1. Put public-key.pem into install-scripts folder
+1. Go to Settings -> System -> CORS 
+    1. Set it to enabled
+    1. Allow all methods
+    1. Put content-type into allowed headers. 
+    1. Put allow origins to * (or limit further if you like)
+    1. Save
 1. Run ```./setup_apigateway.sh```
 
 ## Setup Frontend
 
-In the frontend a few settings needs to be set to make the frontend work with the newly installed backend and customize the style of the dashboard.
+In the frontend a few settings needs to be set to make the frontend work with the newly installed backend and customize the style of the dashboard. 
 
-1. Run init script for frontend
-1. Modify .env file
-1. Modify images.
-1. Run deploy step of frontend
+1. Prepare installation of frontend. ```./install_frontend.sh```
+1. ```cd dashboarddeelmobiliteit-app-main```
+1. ```cp .env.example .env```
+1. Make sure to specify all environment variables in the .env file.
+1. Run ```npm run build```

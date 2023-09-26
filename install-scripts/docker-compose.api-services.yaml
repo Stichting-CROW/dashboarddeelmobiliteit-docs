@@ -10,7 +10,7 @@ services:
       DB_HOST: postgresql
       DB_USER: postgres
       DB_PASSWORD: ${PGPASSWORD}
-      BASE_URL_FUSIONAUTH: http://fusionauth:9001
+      BASE_URL_FUSIONAUTH: http://fusionauth:9011
       FUSIONAUTH_APIKEY: ${FUSIONAUTH_API_KEY}
       APP_ID: ${FUSIONAUTH_APP_ID}
       TIMESCALEDB_NAME: dashboarddeelmobiliteit
@@ -37,7 +37,7 @@ services:
       DB_HOST: postgresql
       DB_USER: postgres
       DB_PASSWORD: ${PGPASSWORD}
-      BASE_URL_FUSIONAUTH: http://fusionauth:9001
+      BASE_URL_FUSIONAUTH: http://fusionauth:9011
       FUSIONAUTH_APIKEY: ${FUSIONAUTH_API_KEY}
       APP_ID: ${FUSIONAUTH_APP_ID}
       BASE_URL_KONG_ADMIN: http://kong:8001

@@ -6,6 +6,7 @@ else
     cat config_gateway >> .env
 fi
 export $(grep -v '^#' .env | xargs -d '\n')
+export $(grep -v '^#' config | xargs -d '\n')
 
 # Setup global plugins
 
