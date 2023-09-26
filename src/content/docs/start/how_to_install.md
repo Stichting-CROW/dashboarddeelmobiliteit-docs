@@ -33,7 +33,7 @@ Set A records to your machine, we recommend to define the following domains and 
 1. ```cd dashboarddeelmobiliteit-docs-main/install-scripts``````
 1. Copy config_example to config ```cp config_example config```
 1. Setup variables in config file with your favorite text editor. 
-1. Run ./install.sh
+1. Run ```./install.sh``````
 1. If you would like to setup https (highly recommended) run ./setup_https.sh, this will install letsencrypt and starts a wizard.
 1. Another optional step is to prepare the dashboard with some data (specify script that you need to run)
 
@@ -42,8 +42,16 @@ Set A records to your machine, we recommend to define the following domains and 
 1. Go to https://auth.<your_url.com>
 1. Finish installation and create an account.
 1. Complete the 3 setup steps
-1. setup some config with application id and apikey from config
-1. run script y
+    1. Create application
+    1. Create apikey
+    1. Setup email
+1. ```cp config_gateway_example config_gateway```
+1. Setup variables with variables created with step 3
+1. Generate master key for JWT authentication
+    1. Go to Settings -> Key Master -> Generate EC key pair -> give a name and press submit
+    1. Download created Key Master with black download icon
+    1. Put public-key.pem into install-scripts folder
+1. Run ```./setup_apigateway.sh```
 
 ## Setup Frontend
 
@@ -52,4 +60,4 @@ In the frontend a few settings needs to be set to make the frontend work with th
 1. Run init script for frontend
 1. Modify .env file
 1. Modify images.
-1. Run deploy step of frontend.
+1. Run deploy step of frontend

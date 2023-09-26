@@ -4,8 +4,8 @@
 docker compose -f docker-compose.db.yaml \
     up -d
 
-echo "Wait for 5s to let postgresql start up."
-sleep 5
+echo "Wait for 10s to let postgresql start up."
+sleep 10
 ./prepare_db.sh
 
 ./run.sh

@@ -1,5 +1,11 @@
 
-export $(grep -v '^#' config | xargs -d '\n')
+if grep -q "FUSIONAUTH_APP_ID" .env
+then
+    echo "FUSIONAUTH_APP_ID variable already set in .env"
+else
+    cat config_gateway >> .env
+fi
+export $(grep -v '^#' .env | xargs -d '\n')
 
 # Setup global plugins
 
