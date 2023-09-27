@@ -57,6 +57,7 @@ Set DNS A-records to your machine, we recommend to define the following domains 
         * Security -> Disable 'Require and API key'
     1. Create apikey
     1. Setup email
+1. Go to users and register your account with the newly created application.
 1. ```cp config_gateway_example config_gateway```
 1. Setup variables with variables created with step 2, 3 and 4
 1. Get key for JWT authentication

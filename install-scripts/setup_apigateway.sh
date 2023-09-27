@@ -42,10 +42,6 @@ curl --request POST \
   --header 'accept: application/json' \
   --data '{"username":"deny","custom_id":"deny","tags":["general"]}'
 
-#setup keyauth
-curl -X POST http://localhost:8001/plugins/ \
-    --data "name=key-auth"  \
-    --data "config.key_names=apikey"
 
 # Setup dashboard api
 curl -i -s -X POST http://localhost:8001/services \
@@ -67,6 +63,12 @@ curl -i -X POST http://localhost:8001/services/dashboard-api-public/routes \
 curl -X POST http://localhost:8001/routes/dashboard-api-route/plugins \
     --data "name=acl"  \
     --data "config.deny=anonymous"  
+
+#setup keyauth
+curl -X POST http://localhost:8001/routes/dashboard-api-route/plugins \
+    --data "name=key-auth"  \
+    --data "config.key_names=apikey" \
+    --data "config.deny=anonymous"
 
 # 2 microhubs api
 # admin + MDS
