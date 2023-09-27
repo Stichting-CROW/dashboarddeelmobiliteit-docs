@@ -8,4 +8,4 @@ docker run \
     -e DB_PASSWORD=$PGPASSWORD \
     -e DB_USER=$POSTGRES_USER \
     -e TZ='Europe/Amsterdam' \
-    ghcr.io/stichting-crow/dashboarddeelmobiliteit-od-matrix-aggregator:1.0.1
+    ghcr.io/stichting-crow/dashboarddeelmobiliteit-od-matrix-aggregator:1.0.2
