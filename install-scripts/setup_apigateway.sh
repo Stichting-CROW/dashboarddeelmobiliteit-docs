@@ -1,3 +1,4 @@
+#!/bin/bash
 
 if grep -q "FUSIONAUTH_APP_ID" .env
 then
@@ -7,6 +8,10 @@ else
 fi
 export $(grep -v '^#' .env | xargs -d '\n')
 export $(grep -v '^#' config | xargs -d '\n')
+
+# Add first user to DB.
+psql dashboarddeelmobiliteit -h '127.0.0.1' -U postgres \
+  -c "INSERT INTO user_account (user_id, privileges, organisation_id) VALUES ('$FIRST_USER',  '{}', 1) ON CONFLICT DO NOTHING;"
 
 # Setup global plugins
 
