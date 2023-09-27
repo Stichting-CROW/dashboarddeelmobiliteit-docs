@@ -20,10 +20,6 @@ curl -X POST http://localhost:8001/plugins/ \
     --data "name=cors"  \
     --data "config.origins=*"
 
-# Setup JWT
-curl -X POST http://localhost:8001/plugins/ \
-    --data "name=jwt" 
-
 curl --request POST \
   --url http://localhost:8001/consumers \
   --header 'Content-Type: application/json' \
@@ -34,7 +30,6 @@ curl -X POST http://localhost:8001/consumers/fusionauth_authorized/jwt \
   -F "algorithm=RS256" \
   -F "rsa_public_key=@./public-key.pem" \
   -F "key=${JWT_ISSUER}"
-
 
 curl --request POST \
   --url http://localhost:8001/consumers \
