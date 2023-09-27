@@ -8,7 +8,7 @@ sed -i 's/# server_names_hash_bucket_size 64;/server_names_hash_bucket_size 128;
 
 envsubst < nginx_configs/auth > /etc/nginx/sites-available/$AUTH_URL
 host='$host' envsubst < nginx_configs/api_proxy > /etc/nginx/sites-available/$API_PROXY_URL
-envsubst < nginx_configs/frontend > /etc/nginx/sites-available/$FRONTEND_URL
+uri='$uri' envsubst < nginx_configs/frontend > /etc/nginx/sites-available/$FRONTEND_URL
 host='$host' envsubst < nginx_configs/mds > /etc/nginx/sites-available/$MDS_URL
 
 ln -s /etc/nginx/sites-available/$AUTH_URL /etc/nginx/sites-enabled/$AUTH_URL 
