@@ -58,7 +58,8 @@ Set DNS A-records to your machine, we recommend to define the following domains 
     1. Go to Settings -> Key Master -> Generate EC key pair -> give a name and press submit
     1. Download created Key Master with black download icon
     1. Put public-key.pem into install-scripts folder
-1. Go to Settings -> System -> CORS 
+1. Setup CORS
+    1. Go to Settings -> System -> CORS 
     1. Set it to enabled
     1. Allow all methods
     1. Put content-type into allowed headers. 
