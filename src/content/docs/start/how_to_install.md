@@ -51,7 +51,7 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 ![3 configuration steps](https://dashboarddeelmobiliteit.ams3.digitaloceanspaces.com/images/complete_setup_fusionauth.png)
     1. Create application
         * Give it a name
-        * Roles -> Create default role with name: `default_role`
+        * Roles -> Create role with name: `default_role`
         * JWT -> Enabled
             * Set **Access token signing key** to autogenerate on save
         * Security -> Disable 'Require and API key'
