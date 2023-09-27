@@ -49,6 +49,7 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 1. Complete the 3 setup steps
 ![3 configuration steps](https://dashboarddeelmobiliteit.ams3.digitaloceanspaces.com/images/complete_setup_fusionauth.png)
     1. Create application
+        * Create role with name default_role
         * After creating an application go to Security and disable 'Require an API key' and save.
     1. Create apikey
     1. Setup email

@@ -1,3 +1,4 @@
 FUSIONAUTH_APP_ID=<app_id 2490394b-b459-47d0-ba10-ffffffffff>
 FUSIONAUTH_API_KEY=<apikey>
 FIRST_USER=<user@example.com>
+JWT_ISSUER=<acme.com>

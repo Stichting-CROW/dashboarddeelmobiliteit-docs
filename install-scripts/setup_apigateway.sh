@@ -21,6 +21,9 @@ curl -X POST http://localhost:8001/plugins/ \
     --data "config.origins=*"
 
 # Setup JWT
+curl -X POST http://localhost:8001/plugins/ \
+    --data "name=jwt" 
+
 curl --request POST \
   --url http://localhost:8001/consumers \
   --header 'Content-Type: application/json' \
@@ -28,7 +31,10 @@ curl --request POST \
   --data '{"username":"fusionauth_authorized","custom_id":"fusionauth_authorized","tags":["general"]}'
 
 curl -X POST http://localhost:8001/consumers/fusionauth_authorized/jwt \
-  -F "rsa_public_key=@public-key.pem" \
+  -F "algorithm=RS256" \
+  -F "rsa_public_key=@./public-key.pem" \
+  -F "key=${JWT_ISSUER}"
+
 
 curl --request POST \
   --url http://localhost:8001/consumers \
@@ -36,7 +42,10 @@ curl --request POST \
   --header 'accept: application/json' \
   --data '{"username":"deny","custom_id":"deny","tags":["general"]}'
 
-
+#setup keyauth
+curl -X POST http://localhost:8001/plugins/ \
+    --data "name=key-auth"  \
+    --data "config.key_names=apikey"
 
 # Setup dashboard api
 curl -i -s -X POST http://localhost:8001/services \
@@ -55,6 +64,10 @@ curl -i -X POST http://localhost:8001/services/dashboard-api-public/routes \
   --data 'paths[]=/dashboard-api/public' \
   --data name=dashboard-api-public-route
 
+curl -X POST http://localhost:8001/routes/dashboard-api-route/plugins \
+    --data "name=acl"  \
+    --data "config.deny=anonymous"  
+
 # 2 microhubs api
 # admin + MDS
 curl -i -s -X POST http://localhost:8001/services \
@@ -72,6 +85,10 @@ curl -i -X POST http://localhost:8001/services/microhubs-api/routes \
   --data 'paths[]=/' \
   --data name=mds-public
 
+curl -X POST http://localhost:8001/routes/microhubs-admin/plugins \
+    --data "name=acl"  \
+    --data "config.deny=anonymous" 
+
 # 3 od api
 curl -i -s -X POST http://localhost:8001/services \
   --data name=od-api \
@@ -81,6 +98,10 @@ curl -i -X POST http://localhost:8001/services/od-api/routes \
   --data "hosts[]=${API_PROXY_URL}" \
   --data 'paths[]=/od-api' \
   --data name=od-api-route
+
+curl -X POST http://localhost:8001/routes/od-api-route/plugins \
+    --data "name=acl"  \
+    --data "config.deny=anonymous"
 
 #4 admin api
 
@@ -92,3 +113,10 @@ curl -i -X POST http://localhost:8001/services/admin-api/routes \
   --data "hosts[]=${API_PROXY_URL}" \
   --data 'paths[]=/admin' \
   --data name=admin-api-route
+
+curl -X POST http://localhost:8001/routes/admin-api-route/plugins \
+    --data "name=acl"  \
+    --data "config.deny=anonymous" 
+
+# Restart everything with changed environment variables.
+./run.sh
