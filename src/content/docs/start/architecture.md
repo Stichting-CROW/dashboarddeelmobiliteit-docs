@@ -15,42 +15,55 @@ The architecture is divided in multiple layers, the Databases are responsible fo
 [PostgreSQL](https://www.postgresql.org/) is used for persistent storage. The [PostGIS](https://postgis.net/) and [TimescaleDB](https://github.com/timescale/timescaledb) extensions are used for extending the capabilities of PostgreSQL with geographical and timeseries related functionality.
 
 ### Redis
-In memory database for volatile non-geography related data. [Redis](https://redis.io/)
+[Redis](https://redis.io/) is an in-memory database for volatile non-geography related data. 
 
 ### Tile38
-In memory database for volatile geography related data. [Tile38](https://tile38.com/)
+[Tile38](https://tile38.com/) is an in-memory database for volatile geography related data. 
 
 ## Data-services (importers and aggregators)
 
 ### importer
+Responsible for importing and processing all available vehicles every 30s into the dashboard. [Github](https://github.com/Stichting-CROW/dd-importer-v2)
 
 ### zone-stats-aggregator
 
-Counts the number of vehicles and rentals started and ended in every custom made zone every 5 minutes and stores it as timeseries data in PostgreSQL. [source code](https://github.com/Stichting-CROW/dd-zone-stats-aggregator)
+Counts the number of vehicles and rentals started and ended in every custom made zone every 5 minutes and stores it as timeseries data in PostgreSQL. [Github](https://github.com/Stichting-CROW/dd-zone-stats-aggregator)
 
 ### daily-report
 
+Aggregates number of vehicles in public space and number of trips made per day so it's quickly accessible for reporting and graphs. [Github](https://github.com/Stichting-CROW/dd-daily-report-aggregator)
+
 ### microhubs-controller
 
-Counts every 30s the number of vehicles in every microhub and decides if a microhubs should closed when reaching the maximum capacity. [source code](https://github.com/Stichting-CROW/dd-microhubs-controller)
+Counts every 30s the number of vehicles in every microhub and decides if a microhubs should closed when reaching the maximum capacity. [Github](https://github.com/Stichting-CROW/dd-microhubs-controller)
 
 ### od-matrix aggregator
+
+Aggregates trips to OD (origins / destination) matrices every hour. [Github](https://github.com/Stichting-CROW/dashboarddeelmobiliteit-od-matrix-aggregator)
 
 ## API-layer
 
 ### dashboard-api
 
+Main api, used for showing the main data of shared mobility in the dashboard. [Github](https://github.com/Stichting-CROW/dashboarddeelmobiliteit-api)
+
 ### admin-api
+
+admin-api is responsible for administrative tasks like creating new users, and new organisations. [Github](https://github.com/Stichting-CROW/dashboarddeelmobiliteit-api-admin)
 
 ### od-api
 
+The od-api is used for the origin destinations matrix functionality within the dashboard. [Github](https://github.com/Stichting-CROW/dashboarddeelmobiliteit-od-api)
+
 ### policy-api
+
+
 
 ## API-gateway
 
 ### FusionAuth
 
-Responsible for the authentication of users, authorization (what priviliges do every user have, and what data can a user is accessed) is handled by every individual API. [FusionAuth](https://fusionauth.io/)
+Responsible for the authentication of users, authorization (what privileges do every user have, and what data can a user is accessed) is handled by every individual API. [FusionAuth](https://fusionauth.io/)
 
 ### Kong
 
