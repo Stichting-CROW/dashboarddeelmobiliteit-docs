@@ -46,25 +46,30 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 
 1. Go to https://auth.<your_url.com>
 1. Finish installation and create an account.
-1. Complete the 3 setup steps
+1. Go to Tenants -> edit button -> specify issuer (use your auth domainname without https:// for example)
+1. Complete the 3 setup steps on the homepage.
 ![3 configuration steps](https://dashboarddeelmobiliteit.ams3.digitaloceanspaces.com/images/complete_setup_fusionauth.png)
     1. Create application
-        * Create role with name default_role
-        * After creating an application go to Security and disable 'Require an API key' and save.
+        * Give it a name
+        * Roles -> Create role with name default_role
+        * JWT -> Enabled
+            * Set Access token signing key to autogenerate on save
+        * Security -> Disable 'Require and API key'
     1. Create apikey
     1. Setup email
 1. ```cp config_gateway_example config_gateway```
-1. Setup variables with variables created with step 2 and 3
-1. Generate master key for JWT authentication
-    1. Go to Settings -> Key Master -> Generate EC key pair -> give a name and press submit
-    1. Download created Key Master with black download icon
-    1. Put public-key.pem into install-scripts folder
+1. Setup variables with variables created with step 2, 3 and 4
+1. Get key for JWT authentication
+    1. Go to Settings -> System -> Key Master
+    1. Click on the loop icon of the just generated key.
+    1. Copy public key -> PEM encoded
+    1. Create public-key.pem into install-scripts folder and paste content.
 1. Setup CORS
     1. Go to Settings -> System -> CORS 
     1. Set it to enabled
+    1. Put 'content-type' into allowed headers. 
     1. Allow all methods
-    1. Put content-type into allowed headers. 
-    1. Put allow origins to * (or limit further if you like)
+    1. Put allow origins to '*' (or limit further if you like)
     1. Save
 1. Run ```./setup_apigateway.sh```
 
