@@ -1,3 +1,4 @@
+#!/bin/bash
 
 . ~/.bashrc
 
@@ -14,7 +15,3 @@ unzip dashboard-frontend.zip
 cd dashboarddeelmobiliteit-app-main
 
 nvm install 16
-nvm use 16
-npm install
-npm run build
-
