@@ -34,7 +34,7 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 1. Copy config_example to config ```cp config_example config```
 1. Setup variables in config file with your favorite text editor. 
 1. Run ```./install.sh```
-1. If you would like to setup https (highly recommended) run ./setup_https.sh, this will install letsencrypt and starts a wizard.
+1. If you would like to setup https (highly recommended) run ```./setup_https.sh```, this will install letsencrypt and starts a wizard.
 1. Another optional step is to prepare the dashboard with some data, this depends per country.
     * For Belgium:
         * ```cd init_data_scripts/belgium```
@@ -47,6 +47,7 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 1. Go to https://auth.<your_url.com>
 1. Finish installation and create an account.
 1. Complete the 3 setup steps
+![3 configuration steps](https://dashboarddeelmobiliteit.ams3.digitaloceanspaces.com/images/complete_setup_fusionauth.png)
     1. Create application
         * After creating an application go to Security and disable 'Require an API key' and save.
     1. Create apikey
