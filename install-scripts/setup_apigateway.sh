@@ -64,11 +64,6 @@ curl -X POST http://localhost:8001/routes/dashboard-api-route/plugins \
     --data "name=acl"  \
     --data "config.deny=anonymous"  
 
-#setup keyauth
-curl -X POST http://localhost:8001/routes/dashboard-api-route/plugins \
-    --data "name=key-auth"  \
-    --data "config.key_names=apikey" \
-    --data "config.deny=anonymous"
 
 # 2 microhubs api
 # admin + MDS
