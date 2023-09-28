@@ -3,11 +3,11 @@ title: How to install?
 description: This page describes how to install a clone of the shared mobility dashboard on your own machine.
 ---
 
-This page describes how to install the shared mobility dashboard on your own machine. This guide is updated for the last time on 27th of September 2023. This guide is focussed on how to install the dashboard on Debian 12 but can also be used to install the dashboard on other operating systems (altough some things don't work out of the box and need manual adaptation).
+This page describes how to install the shared mobility dashboard on your own machine. This guide is updated for the last time on 27th of September 2023. This guide is focussed on how to install the dashboard on Debian 12 but can also be used to install the dashboard on other operating systems (although some things don't work out of the box and need manual adaptation).
 
-The installation process consists of 3 phases, every phase requires some configuration steps.
+The installation process consists of **3 phases**, every phase requires some configuration steps.
 1. Installing main components
-2. Setting up API-gateway
+2. Setting up API gateway
 3. Setting up frontend
 
 # Prepare installation
@@ -39,44 +39,46 @@ Set DNS A-records to your machine, we recommend to define the following domains 
     * For Belgium:
         * ```cd init_data_scripts/belgium```
         * Run ```./import_administrative_zones.sh``` to import border of municipalities
-        * Run ```./add_opendata_test_feeds.sh``` to add some opendata to the dashboard (be aware this data doesn't follow the requirements of the Dashboard)
-1. Run ```./run_all_cronjobs.sh``` to make first aggregated data based on the just imported data
+        * Run ```./add_open data_test_feeds.sh``` to add some open data feeds to the dashboard (be aware these open data feeds don't follow the [requirements](https://docs.crow.nl/deelfietsdashboard/hr-dataspec/) of the Dashboard)
+1. Navigate to the previous directory using ```cd dashboarddeelmobiliteit-docs-main/install-scripts```, then run ```./run_all_cronjobs.sh``` to make first aggregated data based on the just imported data feeds
 
-## Setup API-gateway
+## Setup API gateway
 
 1. Go to https://auth.<your_url.com>
 1. Finish installation and create an account.
-1. Go to Tenants -> edit button -> specify issuer (use your auth domainname without https:// for example)
-1. Complete the 3 setup steps on the homepage.
+1. Go to Tenants -> edit button -> set issuer (use your auth domain name without https:// for example) -> save
+1. Go to the **Dashboard** page and complete the 3 setup steps.
 ![3 configuration steps](https://dashboarddeelmobiliteit.ams3.digitaloceanspaces.com/images/complete_setup_fusionauth.png)
     1. Create application
         * Give it a name
-        * Roles -> Create role with name default_role
+        * Roles -> Create role with name: `default_role`
         * JWT -> Enabled
-            * Set Access token signing key to autogenerate on save
+            * Set **Access token signing key** to autogenerate on save
         * Security -> Disable 'Require and API key'
-    1. Create apikey
+        * Save
+    1. Create API key (Go to **Dashboard** -> Click the _Add_ button)
     1. Setup email
 1. Go to users and register your account with the newly created application.
 1. ```cp config_gateway_example config_gateway```
-1. Setup variables with variables created with step 2, 3 and 4
+1. Setup variables in `config_gateway` with variables created with step 2, 3 and 4
 1. Get key for JWT authentication
     1. Go to Settings -> System -> Key Master
+    1. Click **Generate EC key pair**, give it a name and click **Save**.
     1. Click on the loop icon of the just generated key.
     1. Copy public key -> PEM encoded
-    1. Create public-key.pem into install-scripts folder and paste content.
+    1. Create `public-key.pem` into install-scripts folder and paste content.
 1. Setup CORS
     1. Go to Settings -> System -> CORS 
-    1. Set it to enabled
-    1. Put 'content-type' into allowed headers. 
+    1. Set it to **Enabled**
+    1. Put '`content-type`' into allowed headers. 
     1. Allow all methods
-    1. Put allow origins to '*' (or limit further if you like)
+    1. Put allow origins to '`*`' (or limit further if you like)
     1. Save
 1. Run ```./setup_apigateway.sh```
 
 ## Setup Frontend
 
-In the frontend a few settings needs to be set to make the frontend work with the newly installed backend and customize the style of the dashboard. 
+In the frontend a few settings needs to be set to make the frontend work with the newly installed backend, and to customize the style of the dashboard.
 
 1. Go to frontend directory ```cd dashboarddeelmobiliteit-app-main```
 1. ```cp .env.example .env```
