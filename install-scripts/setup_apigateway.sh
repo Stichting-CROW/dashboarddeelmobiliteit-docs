@@ -62,7 +62,7 @@ curl -X POST http://localhost:8001/routes/dashboard-api-route/plugins \
   --data "name=jwt" \
   --data "config.anonymous=anonymous_consumer"
 
-curl -X POST http://localhost:8001/route/dashboard-api-route/plugins \
+curl -X POST http://localhost:8001/routes/dashboard-api-route/plugins \
     --data "name=key-auth"  \
     --data "config.key_names=apikey" \
     --data "config.anonymous=anonymous_consumer"
@@ -84,6 +84,15 @@ curl -X POST http://localhost:8001/services/microhubs-api/routes \
   --data 'paths[]=/' \
   --data name=mds-public
 
+curl -X POST http://localhost:8001/routes/microhubs-admin/plugins \
+  --data "name=jwt" \
+  --data "config.anonymous=anonymous_consumer"
+
+curl -X POST http://localhost:8001/routes/microhubs-admin/plugins \
+    --data "name=key-auth"  \
+    --data "config.key_names=apikey" \
+    --data "config.anonymous=anonymous_consumer"
+
 # 3 od api
 curl -s -X POST http://localhost:8001/services \
   --data name=od-api \
@@ -94,10 +103,14 @@ curl -X POST http://localhost:8001/services/od-api/routes \
   --data 'paths[]=/od-api' \
   --data name=od-api-route
 
+curl -X POST http://localhost:8001/routes/od-api-route/plugins \
+  --data "name=jwt" \
+  --data "config.anonymous=anonymous_consumer"
 
 curl -X POST http://localhost:8001/routes/od-api-route/plugins \
-    --data "name=jwt"
-
+    --data "name=key-auth"  \
+    --data "config.key_names=apikey" \
+    --data "config.anonymous=anonymous_consumer"
 #4 admin api
 
 curl -s -X POST http://localhost:8001/services \
@@ -108,6 +121,15 @@ curl -X POST http://localhost:8001/services/admin-api/routes \
   --data "hosts[]=${API_PROXY_URL}" \
   --data 'paths[]=/admin' \
   --data name=admin-api-route
+
+curl -X POST http://localhost:8001/routes/admin-api-route/plugins \
+  --data "name=jwt" \
+  --data "config.anonymous=anonymous_consumer"
+
+curl -X POST http://localhost:8001/routes/admin-api-route/plugins \
+    --data "name=key-auth"  \
+    --data "config.key_names=apikey" \
+    --data "config.anonymous=anonymous_consumer"
 
 
 # Restart everything with changed environment variables.
