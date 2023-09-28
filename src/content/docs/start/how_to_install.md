@@ -31,7 +31,7 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 # Install main components
 
 1. ```cd dashboarddeelmobiliteit-docs-main/install-scripts```
-1. Copy config_example to config ```cp config_example config```
+1. Copy example_config to config ```cp example_config config```
 1. Setup variables in config file with your favorite text editor. 
 1. Run ```./install.sh```
 1. If you would like to setup https (highly recommended) run ```./setup_https.sh```, this will install letsencrypt and starts a wizard.
@@ -59,12 +59,11 @@ Set DNS A-records to your machine, we recommend to define the following domains 
     1. Create API key (Go to **Dashboard** -> Click the _Add_ button)
     1. Setup email
 1. Go to users and register your account with the newly created application.
-1. ```cp config_gateway_example config_gateway```
+1. ```cp example_config_gateway config_gateway```
 1. Setup variables in `config_gateway` with variables created with step 2, 3 and 4
 1. Get key for JWT authentication
     1. Go to Settings -> System -> Key Master
-    1. Click **Generate EC key pair**, give it a name and click **Save**.
-    1. Click on the loop icon of the just generated key.
+    1. Click on the loop icon of the in step 4 generated key
     1. Copy public key -> PEM encoded
     1. Create `public-key.pem` into install-scripts folder and paste content.
 1. Setup CORS
