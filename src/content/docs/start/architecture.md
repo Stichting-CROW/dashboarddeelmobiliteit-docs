@@ -57,7 +57,7 @@ The od-api is used for the origin destinations matrix functionality within the d
 
 ### policy-api
 
-
+The policy-api is used for registering microhubs, analytical and no-parking zones. This api also provide the MDS functionality from the governement in the direction of operators. So that operators can process those data automatically. [Github](https://github.com/Stichting-CROW/dd-policy-api)
 
 ## API-gateway
 

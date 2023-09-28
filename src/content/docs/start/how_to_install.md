@@ -39,7 +39,7 @@ Set DNS A-records to your machine, we recommend to define the following domains 
     * For Belgium:
         * ```cd init_data_scripts/belgium```
         * Run ```./import_administrative_zones.sh``` to import border of municipalities
-        * Run ```./add_open data_test_feeds.sh``` to add some open data feeds to the dashboard (be aware these open data feeds don't follow the [requirements](https://docs.crow.nl/deelfietsdashboard/hr-dataspec/) of the Dashboard)
+        * Run ```./add_open_data_test_feeds.sh``` to add some open data feeds to the dashboard (be aware these open data feeds don't follow the [requirements](https://docs.crow.nl/deelfietsdashboard/hr-dataspec/) of the Dashboard)
 1. Navigate to the previous directory using ```cd dashboarddeelmobiliteit-docs-main/install-scripts```, then run ```./run_all_cronjobs.sh``` to make first aggregated data based on the just imported data feeds
 
 ## Setup API gateway
