@@ -10,4 +10,4 @@ npm run build
 
 mkdir -p /srv/www/frontend
 cp -a build/. /srv/www/frontend/
-chown -r www-data:www-data /srv/www/frontend/
+chown -R www-data:www-data /srv/www/frontend/
