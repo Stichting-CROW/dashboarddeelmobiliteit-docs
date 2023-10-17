@@ -17,3 +17,7 @@ export $(grep -v '^#' .env | xargs -d '\n')
 # Install helpfull utilities.
 sudo apt-get install postgresql-client redis-tools -y
 docker network create backend
+
+echo '{
+  "log-driver": "local"
+}' > /etc/docker/daemon.json
