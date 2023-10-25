@@ -51,7 +51,7 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 ![3 configuration steps](https://dashboarddeelmobiliteit.ams3.digitaloceanspaces.com/images/complete_setup_fusionauth.png)
     1. Create application
         * Give it a name
-        * Roles -> Create role with name: `default_role`
+        * Roles -> Create role with name: `default_user`
         * JWT -> Enabled
             * Set **Access token signing key** to autogenerate on save
         * Security -> Disable 'Require and API key'
@@ -69,14 +69,14 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 1. Get key for JWT authentication
     1. Go to Settings -> System -> Key Master
     1. Click on the loop icon of the in step 4 generated key
-    1. Copy public key -> PEM encoded
+    1. Copy public key (the key so not the certificate) -> PEM encoded
     1. Create `public-key.pem` into install-scripts folder and paste content.
 1. Setup CORS
     1. Go to Settings -> System -> CORS 
     1. Set it to **Enabled**
     1. Put '`content-type`' into allowed headers. 
     1. Allow all methods
-    1. Put allow origins to '`*`' (or limit further if you like)
+    1. Put allow origins to '`*`', don't forget to press enter in this field (or limit further if you like)
     1. Save
 1. Run ```./setup_apigateway.sh```
 
