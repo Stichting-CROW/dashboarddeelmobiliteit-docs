@@ -10,6 +10,10 @@ The installation process consists of **3 phases**, every phase requires some con
 2. Setting up API gateway
 3. Setting up frontend
 
+The guidelines and scripts were tested on a VM with 4 vCPUs, 8GB RAM and 160 GB local disk storage.
+
+> Note: The following documentation assumes that the commands are executed as `root` user.
+
 # Prepare installation
 
 Create a fresh Debian machine and run the following command to install the installation scripts. 
@@ -57,9 +61,9 @@ Set DNS A-records to your machine, we recommend to define the following domains 
         * Security -> Disable 'Require and API key'
         * Save
         * Copy generated app id from 'Applications'.
-    1. Create API key (Go to **Dashboard** -> Click the _Add_ button)
+    1. Create API key (Go to **Dashboard** or go to Settings -> API Keys and click the _Add_ button). Copy the API key to be used later.
     1. Setup email
-1. Go to users and register your account with the newly created application.
+1. Go to users and register your account with the newly created application with the role `default_role`.
 1. ```cp example_config_gateway config_gateway```
 1. Setup the following variables in `config_gateway`:
     * `FUSIONAUTH_APP_ID` app id generated in step 4
@@ -86,7 +90,7 @@ In the frontend a few settings needs to be set to make the frontend work with th
 
 1. Go to frontend directory ```cd dashboarddeelmobiliteit-app-main```
 1. ```cp .env.example .env```
-1. Make sure to specify all environment variables in the .env file
+1. Make sure to specify all environment variables in the .env file. Make sure to include the full URLs (including eg. `https://<your_url.com>/`)
     * `REACT_APP_MAPBOX_TOKEN` token for map functionality, right now [Mapbox](https://www.mapbox.com/) is used, but you can also use alternatives like [Maptiler](https://www.maptiler.com/) or host your own maps.
     * `REACT_APP_FUSIONAUTH_APPLICATION_ID` should be the same value as variable `FUSIONAUTH_APP_ID` in `config_gateway`.
     * `REACT_APP_FUSIONAUTH_URL` same value as `AUTH_URL`  in `config`
