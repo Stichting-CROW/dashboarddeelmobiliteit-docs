@@ -10,6 +10,10 @@ The installation process consists of **3 phases**, every phase requires some con
 2. Setting up API gateway
 3. Setting up frontend
 
+The guidelines and scripts were tested on a VM with 4 vCPUs, 8GB RAM and 160 GB local disk storage.
+
+> Note: The following documentation assumes that the commands are executed as `root` user.
+
 # Prepare installation
 
 Create a fresh Debian machine and run the following command to install the installation scripts. 
@@ -55,10 +59,10 @@ Set DNS A-records to your machine, we recommend to define the following domains 
         * JWT -> Enabled
             * Set **Access token signing key** to autogenerate on save
         * Security -> Disable 'Require and API key'
-        * Save
-    1. Create API key (Go to **Dashboard** -> Click the _Add_ button)
+        * Save and copy the application ID to be used later
+    1. Create API key (Go to **Dashboard** or go to Settings -> API Keys and click the _Add_ button). Copy the API key to be used later.
     1. Setup email
-1. Go to users and register your account with the newly created application.
+1. Go to users and register your account with the newly created application with the role `default_role`.
 1. ```cp example_config_gateway config_gateway```
 1. Setup variables in `config_gateway` with variables created with step 2, 3 and 4
 1. Get key for JWT authentication
@@ -81,6 +85,6 @@ In the frontend a few settings needs to be set to make the frontend work with th
 
 1. Go to frontend directory ```cd dashboarddeelmobiliteit-app-main```
 1. ```cp .env.example .env```
-1. Make sure to specify all environment variables in the .env file
+1. Make sure to specify all environment variables in the .env file. Make sure to include the full URLs (including eg. `https://<your_url.com>/`)
 1. Go to install-scripts folder again and run ```./deploy_new_frontend.sh```
 1. Go to your main url and test the dashboard.
