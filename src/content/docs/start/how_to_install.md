@@ -38,7 +38,7 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 1. Copy example_config to config ```cp example_config config```
 1. Setup variables in config file with your favorite text editor. 
 1. Run ```./install.sh```
-1. If you would like to setup https (highly recommended) run ```./setup_https.sh```, this will install letsencrypt and starts a wizard.
+1. Run ```./setup_https.sh```, this will install letsencrypt and starts a wizard.
 1. Another optional step is to prepare the dashboard with some data, this depends per country.
     * For Belgium:
         * ```cd init_data_scripts/belgium```
@@ -50,32 +50,37 @@ Set DNS A-records to your machine, we recommend to define the following domains 
 
 1. Go to https://auth.<your_url.com>
 1. Finish installation and create an account.
-1. Go to Tenants -> edit button -> set issuer (use your auth domain name without https:// for example) -> save
+1. Go to Tenants -> edit button -> set issuer (use your auth domain name without https:// for example dd.vlaanderen.transbits.nl) -> save
 1. Go to the **Dashboard** page and complete the 3 setup steps.
 ![3 configuration steps](https://dashboarddeelmobiliteit.ams3.digitaloceanspaces.com/images/complete_setup_fusionauth.png)
     1. Create application
         * Give it a name
-        * Roles -> Create role with name: `default_role`
+        * Roles -> Create role with name: `default_user`
         * JWT -> Enabled
             * Set **Access token signing key** to autogenerate on save
         * Security -> Disable 'Require and API key'
-        * Save and copy the application ID to be used later
+        * Save
+        * Copy generated app id from 'Applications'.
     1. Create API key (Go to **Dashboard** or go to Settings -> API Keys and click the _Add_ button). Copy the API key to be used later.
     1. Setup email
 1. Go to users and register your account with the newly created application with the role `default_role`.
 1. ```cp example_config_gateway config_gateway```
-1. Setup variables in `config_gateway` with variables created with step 2, 3 and 4
+1. Setup the following variables in `config_gateway`:
+    * `FUSIONAUTH_APP_ID` app id generated in step 4
+    * `FUSIONAUTH_API_KEY` api key generated in step 4
+    * `FIRST_USER` first user account that was registered in fusionauth in step 2
+    * `JWT_ISSUER` the issuer that was setup in step 3
 1. Get key for JWT authentication
     1. Go to Settings -> System -> Key Master
     1. Click on the loop icon of the in step 4 generated key
-    1. Copy public key -> PEM encoded
+    1. Copy public key (the key so not the certificate) -> PEM encoded
     1. Create `public-key.pem` into install-scripts folder and paste content.
 1. Setup CORS
     1. Go to Settings -> System -> CORS 
     1. Set it to **Enabled**
     1. Put '`content-type`' into allowed headers. 
     1. Allow all methods
-    1. Put allow origins to '`*`' (or limit further if you like)
+    1. Put allow origins to '`*`', don't forget to press enter in this field (or limit further if you like)
     1. Save
 1. Run ```./setup_apigateway.sh```
 
@@ -86,5 +91,10 @@ In the frontend a few settings needs to be set to make the frontend work with th
 1. Go to frontend directory ```cd dashboarddeelmobiliteit-app-main```
 1. ```cp .env.example .env```
 1. Make sure to specify all environment variables in the .env file. Make sure to include the full URLs (including eg. `https://<your_url.com>/`)
+    * `REACT_APP_MAPBOX_TOKEN` token for map functionality, right now [Mapbox](https://www.mapbox.com/) is used, but you can also use alternatives like [Maptiler](https://www.maptiler.com/) or host your own maps.
+    * `REACT_APP_FUSIONAUTH_APPLICATION_ID` should be the same value as variable `FUSIONAUTH_APP_ID` in `config_gateway`.
+    * `REACT_APP_FUSIONAUTH_URL` same value as `AUTH_URL`  in `config`
+    * `REACT_APP_MAIN_API_URL` same value as `API_PROXY_URL` in `config`
+    * `REACT_APP_MDS_URL` same value as `MDS_URL`  in `config`
 1. Go to install-scripts folder again and run ```./deploy_new_frontend.sh```
 1. Go to your main url and test the dashboard.

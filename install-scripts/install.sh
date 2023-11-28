@@ -8,7 +8,7 @@ echo "Wait for 10s to let postgresql start up."
 sleep 10
 ./prepare_db.sh
 ./install_frontend.sh
-./install_cron_jobs.sh
+./install_cronjobs.sh
 
 ./run.sh
 ./setup_nginx.sh
