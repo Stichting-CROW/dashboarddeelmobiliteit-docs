@@ -98,3 +98,24 @@ In the frontend a few settings needs to be set to make the frontend work with th
     * `REACT_APP_MDS_URL` same value as `MDS_URL`  in `config`
 1. Go to install-scripts folder again and run ```./deploy_new_frontend.sh```
 1. Go to your main url and test the dashboard.
+
+# Restarting processes
+
+Want to restart everything? Just reboot: `reboot`.
+
+Want to see what processes are running? Run `docker ps`. It will show all running docker containers.
+
+Want to restart one specific docker container?
+1. First run `docker ps` to see what's the name of the process
+1. Stop the process: `docker stop install-scripts-dashboard-api-1` (in this example `install-scripts-dashboard-api-1` is the name of the process)
+1. Start the process again: `docker stop install-scripts-dashboard-api-1`
+
+For more information on how Docker works, see the [Docker documentation](https://docs.docker.com/).
+
+# Final notes
+
+Now everything is installed and running, you can use and adapt this new application to your whishes.
+
+If you adapt/improve the code, publish this code open source as the [open source license](https://github.com/Stichting-CROW/dashboarddeelmobiliteit-app/) requires. This way other/similar projects can learn from each other and reuse each others code if relevant. This saves time and energy. Win-win!
+
+Also, feel free to enhance this documentation during the process of installment or use of the app. Potentially it can be extended with server-specific information, or some things could be clarified further. You can edit the documentation [here](https://github.com/Stichting-CROW/dashboarddeelmobiliteit-docs/), if you're logged in with a GitHub-account.
