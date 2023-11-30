@@ -75,10 +75,48 @@ VALUES (
 
 ##### Without authentication
 
+```sql
+INSERT INTO feeds (system_id, feed_url, feed_type, import_strategy, last_time_updated, is_active) 
+VALUES (
+    'dott', 
+    'https://gbfs.api.ridedott.com/public/v2/brussels/gbfs.json', 
+    'full_gbfs', 
+    'clean', 
+    NOW(),
+    true
+);
+```
+
+:::caution
+This example feed of dott is not suitable to use in production, because in this feed the id's of the vehicles are rotated.
+:::
 
 ##### With static api key
 
-
+```sql
+INSERT INTO feeds 
+(system_id, feed_url, feed_type, import_strategy, authentication, last_time_updated, default_vehicle_type, request_headers, is_active) 
+VALUES (
+    '<system_id>', 
+    '<feed_url>', 
+    'mds', 
+    'clean', 
+    '{
+        "ApiKeyName":"Authorization",
+        "ApiKey":"Bearer <token>",
+        "authentication_type":"token"
+    }   
+    ',
+    4, 
+    NOW(), 
+    '
+    {
+        "Accept": "application/vnd.mds+json;version=1.0"
+    }
+    ',
+    true
+);
+```
 
 ### Add operator to the frontend
 
