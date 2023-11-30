@@ -27,6 +27,10 @@ export default defineConfig({
             link: '/start/how_to_install'
           },
           {
+            label: 'How to add a data feed?',
+            link: '/start/how_to_add_a_feed'
+          },
+          {
             label: 'Architecture',
             link: '/start/architecture'
           }

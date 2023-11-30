@@ -15,7 +15,7 @@ At this moment the dashboard support feeds that are:
 
 - Not authenticated
 - Authenticated with a static apikey in the header
-- [https://github.com/Stichting-CROW/dd-importer-v2/tree/master/feed/auth](Several) OAuth 2.0 implementations (they differ per operator)
+- [Several](https://github.com/Stichting-CROW/dd-importer-v2/tree/master/feed/auth) OAuth 2.0 implementations (they differ per operator)
 
 If authentication is required we strongly recommend to require static apikeys because it's the easiest and least error prone option to implement.
 
@@ -106,9 +106,9 @@ VALUES (
         "ApiKey":"Bearer <token>",
         "authentication_type":"token"
     }   
-    ',
-    4, 
+    ', 
     NOW(), 
+    4,
     '
     {
         "Accept": "application/vnd.mds+json;version=1.0"
