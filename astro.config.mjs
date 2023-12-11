@@ -37,6 +37,20 @@ export default defineConfig({
         ]
       },
       {
+        label: 'Offering a data feed',
+        items: [
+          // Each item here is one entry in the navigation menu.
+          {
+            label: 'For monitoring',
+            link: '/data_feeds/for_monitoring'
+          },
+          {
+            label: 'For steering',
+            link: '/data_feeds/for_steering'
+          }
+        ]
+      },
+      {
         label: 'Using the API\'s',
         items: [
           // Each item here is one entry in the navigation menu.
