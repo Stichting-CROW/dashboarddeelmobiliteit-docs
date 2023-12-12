@@ -1,18 +1,11 @@
-# This script downloads zones from the CBS and loads them into a PostgreSQL table.
-apt-get install -y postgis
-wget -O cbs_data.zip https://www.cbs.nl/-/media/cbs/dossiers/nederland-regionaal/wijk-en-buurtstatistieken/wijkbuurtkaart_2019_v1.zip
-unzip cbs_data.zip -d cbs_data
+# This script downloads zones from PDOK and loads them into a PostgreSQL table.
+export $(grep -v '^#' ../../.env | xargs -d '\n')
 
-cd cbs_data
-
-echo 'Import gemeentes (municipalities) CBS'
-shp2pgsql -s 28992:4326 gemeente_2019_v1.shp public.municipalities | psql deelfietsdashboard
-echo 'Import wijken (areas) CBS'
-shp2pgsql -s 28992:4326 wijk_2019_v1.shp public.areas | psql deelfietsdashboard
-echo 'Import buurten (neighboorhoods) CBS'
-shp2pgsql -s 28992:4326 buurt_2019_v1.shp public.neighborhoods | psql deelfietsdashboard
+# Download from PDOK
+# https://www.pdok.nl/atom-downloadservices/-/article/cbs-wijken-en-buurten#3af4dfc5c041640dbd8e17c9b69c8356
+wget https://service.pdok.nl/cbs/wijkenbuurten/2022/atom/downloads/wijkenbuurten_2022_v1.gpkg
 
 # Add shapes from municipalities, residential_areas en neighborhoods to zones.
-#psql deelfietsdashboard -f insert_in_zones.sql
-#  update zones set area==ST_makevalid(area) where NOT ST_isValid(area);
-# Run deze query om zones te fixen.
+ogr2ogr -f PostgreSQL "PG:dbname=dashboarddeelmobiliteit user=postgres port=5432 host=localhost" wijkenbuurten_2022_v1.gpkg
+psql -U postgres -d dashboarddeelmobiliteit -f insert_in_zones.sql -h localhost
+
