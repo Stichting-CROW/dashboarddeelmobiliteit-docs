@@ -10,9 +10,7 @@ else
     echo "FUSIONAUTH_APP_MEMORY=512M" >> .env
 fi
 
-echo $PGPASSWORD
 export $(grep -v '^#' .env | xargs -d '\n')
-echo $PGPASSWORD
 
 # prepare DB kong
 createdb -U postgres -h localhost kong

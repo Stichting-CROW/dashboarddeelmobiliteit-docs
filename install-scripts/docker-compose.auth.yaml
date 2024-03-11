@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  fusionauth:
+    image: fusionauth/fusionauth-app:latest
+    depends_on:
+      - postgresql
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgresql:5432/fusionauth
+      DATABASE_ROOT_USERNAME: ${POSTGRES_USER}
+      DATABASE_ROOT_PASSWORD: ${PGPASSWORD}
+      DATABASE_USERNAME: ${DATABASE_FUSIONAUTH_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_FUSIONAUTH_PASSWORD}
+      FUSIONAUTH_APP_MEMORY: ${FUSIONAUTH_APP_MEMORY}
+      FUSIONAUTH_APP_RUNTIME_MODE: development
+      FUSIONAUTH_APP_URL: http://fusionauth:9011
+      SEARCH_TYPE: database
+      
+    networks:
+      - backend
+    restart: always
+    ports:
+      - 127.0.0.1:9011:9011
+    volumes:
+      - fusionauth:/usr/local/fusionauth/config
+
+networks:
+  backend:
+    name: backend
+    external: true
+
+volumes:
+  fusionauth:
+    name: fusionauth
