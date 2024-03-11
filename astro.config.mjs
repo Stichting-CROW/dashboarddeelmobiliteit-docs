@@ -64,6 +64,15 @@ export default defineConfig({
         ]
       },
       {
+        label: 'Service areas API',
+        items: [
+          {
+            label: 'Service areas',
+            link: '/api_docs/service_areas'
+          }
+        ]
+      },
+      {
         label: 'Microhubs API',
         items: [
           {
