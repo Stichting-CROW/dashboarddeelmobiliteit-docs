@@ -47,6 +47,10 @@ export default defineConfig({
           {
             label: 'For steering',
             link: '/data_feeds/for_steering'
+          },
+          {
+            label: 'Sharing service areas',
+            link: '/data_feeds/service_areas'
           }
         ]
       },
