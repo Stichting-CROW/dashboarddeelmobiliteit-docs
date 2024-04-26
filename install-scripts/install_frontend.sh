@@ -14,4 +14,4 @@ wget -O dashboard-frontend.zip https://github.com/Stichting-CROW/dashboarddeelmo
 unzip dashboard-frontend.zip
 cd dashboarddeelmobiliteit-app-main
 
-nvm install 16
+nvm install 18
