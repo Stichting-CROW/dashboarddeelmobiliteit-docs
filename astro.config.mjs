@@ -68,6 +68,15 @@ export default defineConfig({
         ]
       },
       {
+        label: 'Parked Vehicles API',
+        items: [
+          {
+            label: 'Parked vehicles',
+            link: '/api_docs/parked_vehicles'
+          }
+        ]
+      },
+      {
         label: 'Service areas API',
         items: [
           {
