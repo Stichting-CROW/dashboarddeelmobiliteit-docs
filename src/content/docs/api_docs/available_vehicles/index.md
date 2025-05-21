@@ -74,6 +74,12 @@ Het attribuut `is_reserved` is `true` als de fiets is gereserveerd voor een gebr
 
 Het attribuut `is_disabled` is `true` als de fiets niet beschikbaar is voor gebruik, bijvoorbeeld als het voertuig is gekenmerkt als defect.
 
+## Example script: Get vehicles in your municipality
+
+We want to offer the best possible performance, therefor there're no filtering operations available in the API itself. Any user of this API can filter the data themselves however they'd like (for example: filter by operator, modality or geographic location).
+
+Here is a working example script written in Python, that shows you how to filter by municipality/area: https://gist.github.com/sven4all/2b69fc2dc08e624171235e21ce360aab
+
 ## More information
 
 Do you have any questions on how to use the API, feel free to contact info@dashboarddeelmobiliteit.nl
