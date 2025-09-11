@@ -41,12 +41,12 @@ export default defineConfig({
         items: [
           // Each item here is one entry in the navigation menu.
           {
-            label: 'For monitoring',
+            label: 'Monitoring',
             link: '/data_feeds/for_monitoring'
           },
           {
-            label: 'For steering',
-            link: '/data_feeds/for_steering'
+            label: 'Parking regulations',
+            link: '/data_feeds/parking_regulations'
           },
           {
             label: 'Sharing service areas',
