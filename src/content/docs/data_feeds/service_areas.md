@@ -39,22 +39,15 @@ In the Dashboard Deelmobiliteit the [Service areas](https://dashboarddeelmobilit
 
 ### field specifications
 
-| Field Name                                       | Type                 | Notes                                                                                                                                |
-| ------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `geofencing_zones[].type`                        | String               | Must be filled with `FeatureCollection` (part of GeoJSON)                                                                            |
-| `geofencing_zones[].features`                    | Array<Object>        | List of GeoJSON features                                                                                                             |
-| `geofencing_zones[].features[].type`             | String               | Must be filled with `"Feature"`                                                                                                      |
-| `geofencing_zones[].features[].geometry`         | GeoJSON MultiPolygon | Describes the geographic area; the recommendation is to create different features rather than placing all polygons in a multipolygon |
-| `geofencing_zones[].features[].properties`       | Object               |                                                                                                                                      |
-| `geofencing_zones[].features[].properties.rules` | Array<Rule>          | Can override global rules if needed; should be used when different geofences exist for various modalities offered by the operator    |
-| `global_rules`                                   | Array<Rule>          | In the NL profile, these values must always be provided: ```json "global_rules": [                                                   |
-
-{
-"ride_end_allowed": false,
-"ride_start_allowed": false,
-"ride_through_allowed": true
-}
-]``` |
+| Field Name                                       | Type                 | Notes                                                                                                                                                  |
+| ------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `geofencing_zones[].type`                        | String               | Must be filled with `FeatureCollection` (part of GeoJSON)                                                                                              |
+| `geofencing_zones[].features`                    | Array<Object>        | List of GeoJSON features                                                                                                                               |
+| `geofencing_zones[].features[].type`             | String               | Must be filled with `"Feature"`                                                                                                                        |
+| `geofencing_zones[].features[].geometry`         | GeoJSON MultiPolygon | Describes the geographic area; the recommendation is to create different features rather than placing all polygons in a multipolygon                   |
+| `geofencing_zones[].features[].properties`       | Object               |                                                                                                                                                        |
+| `geofencing_zones[].features[].properties.rules` | Array<Rule>          | Can override global rules if needed; should be used when different geofences exist for various modalities offered by the operator                      |
+| `global_rules`                                   | Array<Rule>          | In the NL profile, these values must always be provided like this: "ride_end_allowed": false "ride_start_allowed": false, "ride_through_allowed": true |
 
 ## station_information.json
 
