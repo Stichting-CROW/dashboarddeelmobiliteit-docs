@@ -114,7 +114,17 @@ export default defineConfig({
             link: '/api_docs/parkeertelling'
           }
         ]
+      },
+      {
+        label: 'OD Matrices API',
+        items: [
+         {
+            label: 'OD Matrices (herkomst/bestemming)',
+            link: '/api_docs/hb_matrices'
+          }
+        ]
       }
+
     ]
   })],
   // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
