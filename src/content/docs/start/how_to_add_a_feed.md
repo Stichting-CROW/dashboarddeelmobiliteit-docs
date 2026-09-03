@@ -39,6 +39,7 @@ New data feeds should be added to the `feeds`database table. Per operator you sh
 - `default_vehicle_type`: some data standards don't provide information about what vehicle_types every vehicle is, by setting op a default vehicle_type you can get correct data in most circumstances. Default vehicle_types can be found [here](https://github.com/Stichting-CROW/dd-importer-v2/blob/master/sql/main_model.sql#L185)
 - `request_headers`, sometimes additonal HTTP headers are needed to request data. In this column all those headers can be added.
 - `is_active`: it's possible to deactivate a feed without removing the record of the feed by setting this value to false.
+- `remarks`: optional free-text notes about the feed (e.g. contact info, caveats, or setup context).
 
 #### Examples of adding a feed
 
